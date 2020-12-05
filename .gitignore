@@ -1,0 +1,6 @@
+# Files created during compilation
+*.aux
+*.log
+*.out
+
+./idea/*
