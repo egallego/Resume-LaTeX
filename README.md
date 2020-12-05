@@ -6,8 +6,6 @@ This is the template I use for my own resume. I've compiled it with elements fro
 2. [Carmine Benedetto's Smart Fancy LaTeX CV](https://github.com/neoben/smart-fancy-latex-cv)
 3. [Adrien Friggeri's Fancy CV](https://www.sharelatex.com/templates/52fb8c1f33621a613683ecad)
 
-![CV Screenshot](screen.png)
-
 ## Installing pre-requisites (Windows)
 
 1. Install [MiKTeX](https://miktex.org/howto/install-miktex), a TeX distribution for Windows that includes a large number of major packages.
