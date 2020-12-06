@@ -1,70 +1,49 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Twenty Seconds Resume/CV
-% LaTeX Template
-% Version 1.0 (14/7/16)
-%
-% Original author:
-% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
-% Vel (vel@LaTeXTemplates.com) and Harsh (harsh.gadgil@gmail.com)
-%
-% License:
-% The MIT License (see included LICENSE file)
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
-\documentclass[letterpaper]{DS_class_file.cls} % a4paper for A4
+\documentclass[letterpaper]{DS_class_file} % a4paper for A4
 
 % Command for printing skill overview bubbles
-\newcommand\skills{ 
-~
-	\smartdiagram[bubble diagram]{
-        \textbf{Data}\\\textbf{Engineering},
-        \textbf{Full Stack}\\\textbf{Dev},
-        \textbf{~~~~~~~~OOP~~~~~~~~~},
-        \textbf{~~~~~~Machine~~~~~~}\\\textbf{~~Learning~~},
-        \textbf{~~~~~DevOps~~~~~}
-    }
-}
+
+\tools{	{\faCogs \hspace{1mm} \textbf{Other Tooling}: Spark, Kafka,  git, / AWS},
+		{\faAreaChart \hspace{1mm} \textbf{Data Visualization}: Matplotlib,  /seaborn, D3.js},
+		{\faLegal  \hspace{2mm} \textbf{Data Manipulation}: SciPy, NumPy/ pandas, Matlab},
+		{\faFlask \hspace{2mm} \textbf{Model Generation}: Sklearn, / XGBoost, TensorFlow, Keras},
+	   	{\faDatabase \hspace{2mm} \textbf{Data Storage}: PostgreSQL,  MySql,/ Elastic-Search},
+   }
 
 % Programming skill bars
-\programming{{C $\textbullet$ C++  $\textbullet$ R / 3}, {JavaScript $\textbullet$ SQL $\textbullet$ \large \LaTeX / 3.5}, {Scala $\textbullet$ Java $\textbullet$ Python / 5}}
+\languages{{$\textbullet$ Dutch (A1) / 1 },{$\textbullet$ French (B1) / 3 },{$\textbullet$ English (C1) / 5 }, {$\textbullet$ Catalan \& Spanish (Native) / 6 }}
 
-% Projects text
-\education{
-\textbf{MSc., Computer Science} (GPA: 3.7) \\
-Specialization: Data Mining \\
-University of Guelph \\
-2015 - 2017 | Guelph, Canada
-
-\textbf{BEng., Computer Engineering} (GPA: 4.0) \\
-University of Pune \\
-2009 - 2013 | Pune, India
-}
 
 %----------------------------------------------------------------------------------------
 %	 PERSONAL INFORMATION
 %----------------------------------------------------------------------------------------
-% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
-
-\cvname{HARSH GADGIL} % Your name
-\cvjobtitle{ Data Engineer } % Job
+% If you don't need onse or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+%\profilepic{mbk.jpg}% My photo is here
+\cvname{Esteve Gallego Jutgl\`{a}} % My name.
+\cvjobtitle{\hspace{0.05cm}Data Scientist} % My position.
 % title/career
+\cvnumberphone{+32 488.674.375} % Phone number
+\cvhome{Antwerpen, Belgium} % Where I live.
+\cvmail{esteve.gallego.jutgla@gmail.com} % Email address
+\cvlinkedin{esteve-gallego-jutgla}
+\cvgithub{egallego}
 
-\cvlinkedin{/in/hsgadgil}
-\cvgithub{opensorceror}
-\cvnumberphone{(647) 221 7999} % Phone number
-\cvsite{hgadgil.com} % Personal website
-\cvmail{harsh.gadgil@gmail.com} % Email address
+
 
 %----------------------------------------------------------------------------------------
 
 \begin{document}
 
-\makeprofile % Print the sidebar
+\makeprofile % Printing sidebar
+
+%----------------------------------------------------------------------------------------
+%	 SUMMARY
+%----------------------------------------------------------------------------------------
+
+\section{Summary}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 
 %----------------------------------------------------------------------------------------
 %	 EXPERIENCE
@@ -72,90 +51,121 @@ University of Pune \\
 
 \section{Experience}
 
-\begin{twenty} % Environment for a list with descriptions
-\twentyitem
-    	{April 2017 -}
-		{Present}
-        {Machine Learning Engineer}
-        {\href{http://www.bell.ca/}{Bell}}
-        {}
-        {\begin{itemize}
-        \item Focused on developing machine learning models, production deployment,  unit testing, scaling and performance tuning
-        \item Projects: SMS spam detection, Robocall detection 
-        
-        Tools: Kafka, Flume, Spark, Hive, Solr, Jupyter Lab, Kubernetes, Docker
-        
-        Awards: Merit Gold (2x), Merit Platinum
-        \item Presented several talks on Machine Learning and Big Data at university hackathons and Bell internal conferences
-        \item Conducted interviews for junior, and senior, data engineering roles
-        \end{itemize}}
-        \\
-	\twentyitem
-    	{Sep 2015 -}
-		{May 2016}
-        {Co-founder \& Full Stack Developer}
-        {\href{http://www.localxchange.ca/}{LocalXChange Inc.}}
-        {}
-        {
-        {\begin{itemize}
-        \item In a team of 2, raised \$8,000 in funding from The Hub incubator at the University of Guelph, to develop a hyperlocal content platform, aimed at delivering local news and events to local users in realtime
-        \item In a team of 3, built hybrid mobile \& web apps with Ionic, Angular.js and MongoDB, surpassing 1,000 users within a month since launch
-        \item Met with the Mayor of Guelph and University of Guelph officials to discuss how the app can help boost Guelph Tourism 
-    \end{itemize}}
-        }
-    \\   
-    \twentyitem
-   		{Sep 2015 -}
-		{Dec 2016}
-        {Graduate Teaching Assistant}
-        {\href{http://www.uoguelph.ca}{University of Guelph}}
-        {}
-        {
-        {\begin{itemize}
-        \item TA for CIS*2430 (OOP), CIS*4150 (Software Reliability \& Testing) and CIS*3530 (Database Systems \& Concepts) courses
-        \item Delivered several lectures for CIS*3530 when professor was away at a conference
-    \end{itemize}}
-        }
-     \\
-     \twentyitem
-   		{Dec 2013 -}
-		{Apr 2015}
-        {Test Automation Engineer}
-        {\href{http://www.synechron.com/}{Synechron}}
-        {}
-        {
-        \begin{itemize}
-        \item Primarily developed test automation libraries using Java and C\#, scripts and CI / CD pipelines
-        \item Lead development of a Keyword Driven \& Behavior Driven test framework for \href{https://www.microsoft.com/en-ca/dynamics/crm.aspx}{Microsoft Dynamics CRM}. Earned monetary award \& client appreciation.
-        \item Demonstrated that rewriting an in-house test framework for \href{https://www.microsoft.com/en-ca/dynamics/erp-ax-overview.aspx}{Microsoft Dynamics AX}, using an open source library (White) instead of a proprietary one (Coded UI), would help the team save \$4K annually by downgrading Microsoft Visual Studio
-    \end{itemize}
-    	}
-        
-	%\twentyitem{<dates>}{<title>}{<location>}{<description>}
-\end{twenty}
-
-%----------------------------------------------------------------------------------------
-%	 RESEARCH
-%----------------------------------------------------------------------------------------
-\section{Research}
 \begin{twenty}
 	\twentyitem
-    	{2015 - 2017}
-		{}
-        {MSc. Candidate, Graduate Research Assistant}
-        {\href{http://www.uoguelph.ca/}{University of Guelph}}
+	{Feb. 2018}
+	{Present}
+	{Data Scientist}
+	{\href{https://www.sentiance.com/}{Sentiance}}
+	{}
+	{\begin{itemize}
+			\item Developed an algorithm for smartphone orientation\\detection, leading to improve car movement detection.
+			\item Implemented a model for abnormal walking detection\\used for after-surgery recovery tracking.
+			\item Improved phone handling recognition while driving,\\achieving better distracted driver profiling.
+			\item Team leader of a small team with client focus.
+	\end{itemize}
+	\textbf{Tools}: Python, TensorFlow Keras, AWS, Spark, git}
+
+	\\
+	\twentyitem
+	{Sept. 2015}
+	{July 2017}
+	{Data Scientist}
+	{\href{http://www.vilarriba.com/}{Vilar Riba}}
+	{}
+	{\begin{itemize}
+			\item Created scoring models for targeted marketing  \\ campaigns, used to focus sales efforts.
+			\item Developed of a system for product recommendation, \\ increasing number of elements bought per client.
+			\item Implemented an API rest service used as endpoint \\ for recommender calls.
+	\end{itemize}
+	\textbf{Tools}: Python, Xgboost, Sklearn, Flask }
+	\\
+	\twentyitem
+	{Feb. 2011}
+	{Sept. 2017}
+	{Assistant Professor}
+	{\href{https://www.uvic.cat/}{Universitat de Vic}}
+	{Subjects taught: Digital Signal Processing, Electronics \\ and Integrated Projects.}
+	{}
+\end{twenty}
+%----------------------------------------------------------------------------------------
+%	 EDUCATION
+%----------------------------------------------------------------------------------------
+\vspace{-4mm}
+\section{Education}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem
+    	{2011 - 2015}
         {}
-        {
-       	\textbf{Thesis}: Data Integration from Multiple Historical Sources to Study Canadian Casualties of WWI
-        {\begin{itemize}
-        \item Proposed a stepwise deterministic method to integrate datasets without labeled data. The method performs comparably with a method that incorporates a Support Vector Machine
-        \item Prepared a longitudinal dataset to enable comprehensive analyses about WWI Canadian society and military, seeding further research
-        \item \textbf{Tools}: R, Python, scikit-learn, pandas \vspace{2mm}
-		\end{itemize}}
-        }
+        {PhD in Signal Processing and  machine learning}
+        {\href{https://www.uvic.cat/}{Universitat de Vic}}
+        {PhD Thesis: \href{http://www.tdx.cat/handle/10803/290853}{New signal processing and machine \\ learning methods for EEG data analysis of patients \\ with Alzheimer's disease.}}
+        {Cum Laude and International doctor distinction}
+        \\
+	\twentyitem
+		{2010 - 2011}
+		{}
+		{Master in Information Technology}
+		{\href{https://www.uvic.cat/}{Universitat de Vic}}
+		{}
+		{Summa Cum Laude distinction}
+		\\
+	\twentyitem
+		{2005 - 2010}
+		{}
+		{Technical Engineering of Telecommunications}
+		{\href{https://www.uvic.cat/}{Universitat de Vic}}
+		{Specialty in Telecommunication Systems}
+		{Summa Cum Laude distinction}
+		\\
+	\twentyitem
+		{2005 - 2010}
+		{}
+		{Industrial Technical Engineering}
+		{\href{https://www.uvic.cat/}{Universitat de Vic}}
+		{Specialty in Industrial Electronics}
+		{}
 \end{twenty}
 
-\section{Publications}
-L. Antonie, H. Gadgil, G. Grewal, and K. Inwood, “Historical Data Integration - A Study of WWI Canadian Soldiers,” in 2016 IEEE 16th International Conference on Data Mining Workshops (ICDMW), pp. 186-193, IEEE, 2016. \vspace{2mm}
 
-\end{document} 
+
+%----------------------------------------------------------------------------------------
+%	 ACCOMPLLISHMENTS
+%----------------------------------------------------------------------------------------
+\vspace{-2mm}
+\section{Research and Mentoring}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem
+	{Research}
+	{}
+	{Journal Papers / Book Chapters}
+	{}
+	{Four articles and a book chapter published in different \\ first quartile academic journals.}
+	{}
+	\twentyitem
+	{}
+	{}
+	{Proceedings of peer-reviewed international conferences}
+	{}
+	{Seven articles published in international conference proceedings.}
+	{}
+	\twentyitem
+	{}
+	{}
+	{Research Internships}
+	{}
+	{Worked in different research laboratories in Japan, France,\\Singapore  and Germany, for a total period of 8 months.}
+	{}
+	\twentyitem
+	{Mentoring}
+	{2013 - 2015}
+	{FIRST Tech Challenge Mentor}
+	{\href{https://twitter.com/garrinsmetalics?lang=ca}{Garrins Met\`{a}l\cdot lics}}
+	{Mentored a team of 12 engineering students. Their aim was to \\participate in the FTC robot championship. Compited in different \\countries such as Spain, France, The Netherlands and USA.}
+	{}
+	\\
+\end{twenty}
+
+\end{document}

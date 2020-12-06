@@ -41,22 +41,8 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
-\ifxetex
-  \usepackage{letltxmacro}
-  \setlength{\XeTeXLinkMargin}{1pt}
-  \LetLtxMacro\SavedIncludeGraphics\includegraphics
-  \def\includegraphics#1#{% #1 catches optional stuff (star/opt. arg.)
-    \IncludeGraphicsAux{#1}%
-  }%
-  \newcommand*{\IncludeGraphicsAux}[2]{%
-    \XeTeXLinkBox{%
-      \SavedIncludeGraphics#1{#2}%
-    }%
-  }%
-\fi
-
 %----------------------------------------------------------------------------------------
-%	 COLOURS
+%	 DEFINING COLOURS
 %----------------------------------------------------------------------------------------
 
 \definecolor{white}{RGB}{255,255,255}
@@ -64,6 +50,9 @@
 \definecolor{sidecolor}{HTML}{E7E7E7}
 \definecolor{mainblue}{HTML}{0E5484}
 \definecolor{maingray}{HTML}{B9B9B9}
+\definecolor{mainblak}{HTML}{000000}
+\definecolor{mainpurple}{HTML}{884EA0}
+%\definecolor{maingray}{HTML}{85929E}
 
 \definecolor{pblue}{HTML}{0395DE}
 
@@ -106,11 +95,6 @@
 \colorlet{textcolor}{gray}
 \colorlet{headercolor}{gray}
 
-%----------------------------------------------------------------------------------------
-%	 MISC CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-% \renewcommand{\bfseries}{\color{black}} % Make \textbf produce coloured text instead
 
 \pagestyle{empty} % Disable headers and footers
 
@@ -133,133 +117,163 @@
 \pgfmathsetlength{\imagewidth}{5cm}
 \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
-\newcommand{\profilesection}[2]{\vspace{8pt}{\color{black!80} \huge #1 \rule[0.15\baselineskip]{#2}{1pt}}}
+\newcommand{\profilesection}[2]{\vspace{8pt}{\color{headercolor} \huge #1 \rule[0.15\baselineskip]{#2}{1pt}}}
 
 % Define custom commands for CV info
 \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
+\newcommand{\cvresearchgate}[1]{\renewcommand{\cvresearchgate}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
+\newcommand{\cvhome}[1]{\renewcommand{\cvhome}{#1}}
 \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
+%New------------------------------------------------
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
+%New------------------------------------------------
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
+%New Surname
+\newcommand{\cvsurname}[1]{\renewcommand{\cvsurname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 
+
 % Command for printing the contact information icons
-\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
+\newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainpurple,mainpurple,text=white] (char) {#1};}}
+
+\newcommand\tools[1]{
+	\renewcommand{\tools}{
+		\vspace{-3mm}
+		\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\node [above right] at (0,\i+0.4) {\x};
+			\node [above right] at (0,\i+0) {\hspace{6mm}\parbox[t]{0.83\textwidth}{\y}};
+		}
+		\end{tikzpicture}
+	}
+}
 
 % Command for printing skill progress bars
 \newcommand\programming[1]{ 
 	\renewcommand{\programming}{
 		\begin{tikzpicture}
-        	\node [above right] at (0, 4) {$0 \: LOC \: \arrow{3.2} \: 5000 \: LOC$};
 			\foreach [count=\i] \x/\y in {#1}{
 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,mainblue](0,\i) rectangle (\y,\i+0.4);
+				\draw[fill=white,pblue](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.35) {\x};
 			}
 		\end{tikzpicture}
 	}
 }
-\newcommand\education[1]{ 
-	\renewcommand{\education}{
-		{#1}
+
+\newcommand\programminglanguage[1]{ 
+	\renewcommand{\programminglanguage}{
+		\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
+			\draw[fill=white,pblue](0,\i) rectangle (\y,\i+0.4);
+			\node [above right] at (0,\i+0.35) {\x};
+		}
+		\end{tikzpicture}
 	}
 }
+
+\newcommand\languages[1]{ 
+	\renewcommand{\languages}{
+		\begin{tikzpicture}
+		\foreach [count=\i] \x/\y in {#1}{
+			\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
+			\draw[fill=white,pblue](0,\i) rectangle (\y,\i+0.4);
+			\node [above right] at (0,\i+0.35) {\x};
+		}
+		\end{tikzpicture}
+	}
+}
+
 
 %----------------------------------------------------------------------------------------
 %  SIDEBAR LAYOUT
 %----------------------------------------------------------------------------------------
 
 \newcommand{\makeprofile}{
-  \begin{tikzpicture}[remember picture,overlay]
-      \node [rectangle, fill=sidecolor, anchor=north, minimum width=9cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
-  \end{tikzpicture}
+	\begin{tikzpicture}[remember picture,overlay]
+	\node [rectangle, fill=sidecolor, anchor=north, minimum width=9.1cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+	\end{tikzpicture}
+	
+	%------------------------------------------------
+	
+	\begin{textblock}{6}(0.55, 0.2)
 
-  %------------------------------------------------
+		%------------------------------------------------
+		
+		 \vspace{4mm}
+		{\color{pblue}\LARGE \cvname}
 
-  \begin{textblock}{6}(0.5, 0.2)
+		\vspace{4mm}
+		
+		%------------------------------------------------
+		
+		{\Large\color{black!80}\cvjobtitle}
+		
+		%------------------------------------------------
+		
+		\vspace{3mm}
+		\renewcommand{\arraystretch}{2}
+		\begin{tabular}{p{1cm} @{\hskip 0.5cm}p{5cm}}
+			\ifthenelse{\equal{\cvnumberphone}{}}{}{
+				{$
+					\begin{array}{l}
+					\hspace{2mm} \Huge \textnormal{\faMobile} 
+					\end{array}
+					$} 
+				& \cvnumberphone\\}
+			
+			\ifthenelse{\equal{\cvhome}{}}{}{
+				{$
+					\begin{array}{l}
+					 \hspace{0.5mm} \huge \textnormal{\faHome}
+					\end{array}
+					$} 
+				& \cvhome \\}
+			\ifthenelse{\equal{\cvmail}{}}{}{
+				{$
+					\begin{array}{l}
+					\huge \textnormal{\textcolor{yt}{\faEnvelopeO}}
+					\end{array}
+					$} 
+				& \hspace{-3mm}\href{mailto:\cvmail}{\cvmail} \\}
+			
+			\ifthenelse{\equal{\cvlinkedin}{}}{}{
+				{$
+					\begin{array}{l}
+					\hspace{0.5mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
+					\end{array}
+					$} & \href{https://www.linkedin.com/in/\cvlinkedin}{\cvlinkedin} \\
+			}  
+			\ifthenelse{\equal{\cvgithub}{}}{}{
+				{$
+					\begin{array}{l}
+					\hspace{0.5mm}  \huge \textnormal{\faGithub}
+					\end{array}
+					$} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+			} 
+			
+		\end{tabular}
 
     %------------------------------------------------
-    
-        \vspace{4mm}
-    {\Huge\color{pblue}\cvname}
-    
-    \vspace{2mm}
+    \vspace{0.5mm}
 
-    %------------------------------------------------
     
-    {\Large\color{black!80}\cvjobtitle}
+    \profilesection{\color{headercolor}Tools}{0.0cm}
 
-    %------------------------------------------------
-    
-    \vspace{3mm}
-    \renewcommand{\arraystretch}{2}
-    \begin{tabular}{p{1cm} @{\hskip 0.5cm}p{5cm}}
-      \ifthenelse{\equal{\cvnumberphone}{}}{}{
-      		{$
-              \begin{array}{l}
-              \hspace{4mm} \Huge \textnormal{\faMobile} 
-              \end{array}
-              $} 
-            & \cvnumberphone\\}
-            
-      \ifthenelse{\equal{\cvsite}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.8mm} \huge \textnormal{\textcolor{test}{\faGlobe}}
-              \end{array}
-              $} 
-            & \href{http://\cvsite}{\cvsite} \\}
-      \ifthenelse{\equal{\cvmail}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{2.5mm} \huge \textnormal{\textcolor{yt}{\faEnvelopeO}}
-              \end{array}
-              $} 
-            & \href{mailto:\cvmail}{\cvmail} \\}
-      
-       \ifthenelse{\equal{\cvlinkedin}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{3mm} \huge \textnormal{\textcolor{linkedin}{\faLinkedin}}
-              \end{array}
-              $} & \href{https://www.linkedin.com\cvlinkedin}{\cvlinkedin} \\
-            }  
-        \ifthenelse{\equal{\cvgithub}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{3mm} \huge \textnormal{\faGithub}
-              \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-            }   
-            
-    \end{tabular}
+    \tools
 
-    %------------------------------------------------
-    \vspace{3mm}
-    \profilesection{Technical Skills}{1.2cm}
-    
-    {\large \textbf{Overview}}
-
-	\skills
-        
-        %------------------------------------------------
-        
-        \vspace{3mm}
-       
-	 {\large \textbf{Programming}} 
-
-		 \programming
+    \profilesection{\color{headercolor}Languages}{0.0cm}		 
+	
+  	\languages
          
-        \vspace{3mm}
-        \profilesection{Education}{3cm} 
-        
-        \education
-      
+       
   \end{textblock}
 }
 
@@ -273,20 +287,13 @@
 	\tikz[baseline=(char.base)]\node[anchor=north west, draw,rectangle, rounded corners, inner sep=1.6pt, minimum size=5.5mm, text height=3.6mm, fill=#2,#2,text=white](char){#1};%
 }
 
-\def\@sectioncolor#1#2#3{%
-	{%
-		\color{pblue} #1#2#3%
-	}%
-}
-
 
 \renewcommand{\section}[1]{
   \par\vspace{\parskip}
 	{%
-		\LARGE\headingfont\color{headercolor}%
-		\@sectioncolor #1%
+		\LARGE\headingfont\color{headercolor} #1%
 	}
-  \par\vspace{1mm}
+  \par\vspace{\parskip}
 }
 
 \renewcommand{\subsection}[1]{
@@ -298,10 +305,6 @@
 
 \pagestyle{empty}
 
-%----------------------------------------------------------------------------------------
-%	 LONG LIST ENVIRONMENT
-%----------------------------------------------------------------------------------------
-
 \setlength{\tabcolsep}{0pt}
 
 % New environment for the long list
@@ -311,31 +314,17 @@
 	\end{tabular*}
 }
 
-% \newcommand{\twentyitem}[5]{%
-% 	#1&\parbox[t]{0.83\textwidth}{%
-% 		\textbf{#2}% 
-% 		\hfill%
-% 		{\footnotesize#3}\\%
-%         \ifblank{#4}{}{#4 \\}
-% 		#5\vspace{\parsep}%
-% 	}\\
-% }
-
 \newcommand{\twentyitem}[6]{%
-	#1&\parbox[t]{0.83\textwidth}{%
+	\parbox[t]{2.5cm}{#1}&\parbox[t]{0.83\textwidth} {%
 		\textbf{#3}% 
 		\hfill%
-		{\footnotesize#4}%
+		{\textcolor{pblue}{\textbf{#4}}}%
         }\\%
-    #2&\parbox[t]{0.83\textwidth}{%
+    \parbox[t]{2.5cm}{#2}&\parbox[t]{0.83\textwidth}{%
 		\ifblank{#5}{}{#5 \\}
 		#6%
 	}\\
 }
-
-%----------------------------------------------------------------------------------------
-%	 SMALL LIST ENVIRONMENT
-%----------------------------------------------------------------------------------------
 
 \setlength{\tabcolsep}{0pt}
 
@@ -352,9 +341,6 @@
 	}\\
 }
 
-%----------------------------------------------------------------------------------------
-%	 MARGINS AND LINKS
-%----------------------------------------------------------------------------------------
 
 \RequirePackage[left=7.6cm,top=0.1cm,right=1cm,bottom=0.1cm,nohead,nofoot]{geometry}
 
