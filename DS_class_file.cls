@@ -137,8 +137,8 @@
 %New Surname
 \newcommand{\cvsurname}[1]{\renewcommand{\cvsurname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
-
-
+\newcommand\education[1]{ \renewcommand{\education}{{#1}}
+}
 % Command for printing the contact information icons
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainpurple,mainpurple,text=white] (char) {#1};}}
 
@@ -263,7 +263,6 @@
 
     %------------------------------------------------
     \vspace{0.5mm}
-
     
     \profilesection{\color{headercolor}Tools}{0.0cm}
 
@@ -272,7 +271,12 @@
     \profilesection{\color{headercolor}Languages}{0.0cm}		 
 	
   	\languages
+  	
+  	\vspace{3.0mm}
          
+	\profilesection{\color{headercolor}Education}{0.0cm} 
+
+	\education
        
   \end{textblock}
 }
